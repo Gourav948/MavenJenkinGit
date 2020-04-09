@@ -1,0 +1,32 @@
+pipeline {
+agent any
+stages {
+stage('Clean stage') {
+steps {
+dir("SpringDataJPADemo") {
+withMaven(maven: 'maven_3_6_1') {
+bat 'mvn clean'
+}
+}
+}
+}
+stage('Compile stage') {
+steps {
+dir("SpringDataJPADemo") {
+withMaven(maven: 'maven_3_6_1') {
+bat 'mvn compile'
+}
+}
+}
+}
+stage('Install stage') {
+steps {
+dir("SpringDataJPADemo") {
+withMaven(maven: 'maven_3_6_1') {
+bat 'mvn install'
+}
+}
+}
+}
+}
+}
